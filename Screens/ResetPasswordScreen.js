@@ -10,12 +10,13 @@ import AppButton from "../Components/AppButton";
 import AppInput from "../Components/AppInput";
 import AppErrorMessage from "../Components/AppErrorMessage";
 import colors from "../config/color";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Validation = Yup.object().shape({
   email: Yup.string().email().required().label("Email"),
 });
 
-function ResetPasswordScreen(props) {
+function ResetPasswordScreen({ navigation }) {
   // forgot password email send code ......................
   const forgotPassword = async (value) => {
     await firebase
@@ -29,6 +30,13 @@ function ResetPasswordScreen(props) {
   return (
     <View style={styles.animationContainer}>
       <View style={styles.container1}>
+        <MaterialCommunityIcons
+          name="arrow-left"
+          size={30}
+          color={colors.white}
+          style={{ top: 60, left: 20 }}
+          onPress={() => navigation.goBack()}
+        />
         <Animatable.Text
           animation="fadeInLeftBig"
           duration={1500}

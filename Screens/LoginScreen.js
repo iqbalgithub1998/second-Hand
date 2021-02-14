@@ -11,6 +11,7 @@ import colors from "../config/color";
 import AuthContext from "../Auth/context";
 import storage from "../Auth/storage";
 import LoadingScreen from "./LoadingScreen";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Validation = Yup.object().shape({
   email: Yup.string().email().required().label("Email"),
@@ -21,7 +22,7 @@ const login = () => {
   return <View style={styles.container}></View>;
 };
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
   const [loading, setLoading] = useState(false);
   const authContext = useContext(AuthContext);
 
@@ -62,6 +63,13 @@ function LoginScreen(props) {
     <View style={styles.animationContainer}>
       <LoadingScreen visible={loading} />
       <View style={styles.container1}>
+        <MaterialCommunityIcons
+          name="arrow-left"
+          size={30}
+          color={colors.white}
+          style={{ top: 60, left: 20 }}
+          onPress={() => navigation.goBack()}
+        />
         <Animatable.Text
           animation="fadeInLeftBig"
           duration={1500}
@@ -127,7 +135,7 @@ function LoginScreen(props) {
         <View style={styles.fbContainer}>
           <Text style={styles.fb}>Forgot Password ?</Text>
           <Text
-            onPress={() => props.navigation.navigate("ResetPassword")}
+            onPress={() => navigation.navigate("ResetPassword")}
             style={{ fontSize: 14, color: "blue", fontWeight: "bold" }}
           >
             {" "}

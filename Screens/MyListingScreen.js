@@ -61,6 +61,8 @@ function MyListingScreen(props) {
     <View style={styles.container}>
       <View>
         <FlatList
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           data={posts}
           keyExtractor={(post) => post.id}
           renderItem={({ item }) => (

@@ -192,7 +192,7 @@ function PostItemScreen(props) {
 export default PostItemScreen;
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: colors.light, margin: 10 },
+  container: { backgroundColor: colors.light, padding: 10 },
   animationContainer: {
     justifyContent: "center",
     alignItems: "center",

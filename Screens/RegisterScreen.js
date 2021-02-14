@@ -9,7 +9,7 @@ import AppInput from "../Components/AppInput";
 import AppErrorMessage from "../Components/AppErrorMessage";
 import colors from "../config/color";
 import LoadingScreen from "./LoadingScreen";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 const Validation = Yup.object().shape({
   username: Yup.string().required().label("Username"),
   email: Yup.string().email().required().label("Email"),
@@ -21,7 +21,7 @@ const Validation = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Passwords does not match"),
 });
 
-function RegisterScreen(props) {
+function RegisterScreen({ navigation }) {
   const db = firebase.firestore();
   const [loading, setLoading] = useState(false);
   const sendVerificationEmail = async () => {
@@ -86,6 +86,13 @@ function RegisterScreen(props) {
     <View style={styles.animationContainer}>
       <LoadingScreen visible={loading} />
       <View style={styles.container1}>
+        <MaterialCommunityIcons
+          name="arrow-left"
+          size={30}
+          color={colors.white}
+          style={{ top: 60, left: 20 }}
+          onPress={() => navigation.goBack()}
+        />
         <Animatable.Text
           animation="fadeInLeftBig"
           duration={1500}

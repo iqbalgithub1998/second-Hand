@@ -35,34 +35,52 @@ function Card({
       <View style={styles.container}>
         <ImageBackground style={styles.image} source={{ uri: image }}>
           {likebtn}
-          {trace ? (
-            <MaterialCommunityIcons
-              style={styles.icon}
-              name="delete-forever"
-              size={30}
-              color={colors.black}
-              onPress={deletePress}
-            />
-          ) : (
-            []
-          )}
-          {edit ? (
-            <MaterialCommunityIcons
-              style={{ position: "absolute", top: 5, right: 40, elevation: 1 }}
-              name="file-edit"
-              size={30}
-              color={colors.color}
-              onPress={editPress}
-            />
-          ) : (
-            []
-          )}
         </ImageBackground>
-        <View style={styles.textContainer}>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }} numberOfLines={1}>
-            {subTitle}
-          </Text>
-          <Text style={[styles.text, { marginBottom: 10 }]}>{title}</Text>
+        <View style={styles.footer}>
+          <View style={styles.textContainer}>
+            <Text
+              style={{ fontSize: 20, fontWeight: "bold" }}
+              numberOfLines={1}
+            >
+              {subTitle}
+            </Text>
+            <Text style={[styles.text, { marginBottom: 10 }]}>{title}</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 15,
+              marginRight: 15,
+            }}
+          >
+            {trace ? (
+              <MaterialCommunityIcons
+                style={styles.icon}
+                name="delete-forever"
+                size={30}
+                color={colors.black}
+                onPress={deletePress}
+              />
+            ) : (
+              []
+            )}
+            {edit ? (
+              <MaterialCommunityIcons
+                style={{
+                  position: "absolute",
+                  top: 5,
+                  right: 40,
+                  elevation: 1,
+                }}
+                name="file-edit"
+                size={30}
+                color={colors.color}
+                onPress={editPress}
+              />
+            ) : (
+              []
+            )}
+          </View>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -78,6 +96,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     overflow: "hidden",
     elevation: 1,
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   icon: {
     position: "absolute",
